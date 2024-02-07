@@ -28,3 +28,6 @@ Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal masterm
 List.create(name: "Drama")
 List.create(name: "All time favourites")
 List.create(name: "Girl Power")
+
+puts "Records created"
+puts "Created records: #{Movie.count} movies, #{List.count}"
