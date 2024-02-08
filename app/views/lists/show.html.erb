@@ -1,0 +1,23 @@
+<div class="card-category my-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.creativefabrica.com/wp-content/uploads/2018/12/Film-cinema-logo-vector-by-DEEMKA-STUDIO-3.jpg)">
+  <%= @list.name %>
+</div>
+
+<div class="container">
+  <a class="btn btn-info mb-3" href="/lists/<%=@list.id%>/bookmarks/new" role="button">Add a movie</a>
+  <div class="cards">
+      <% @list.movies.each do |movie| %>
+        <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <div class="card mb-3" style="width: 36rem;">
+          <img src="<%=bookmark.movie.poster_url%>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"> <%=bookmark.movie.title%> | <%=bookmark.movie.rating%></h5>
+            <p class="card-text"><%=bookmark.movie.overview%></p>
+          </div>
+          <div class="card-body">
+            <p>"<%= bookmark.comment %> </p>
+            <div class="btn btn-info"> <%= link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
