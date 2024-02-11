@@ -13,6 +13,7 @@ class ListsController < ApplicationController
     @bookmark = Bookmark.new
   end
 
+
   def create
     @list = List.new(list_params)
       if @list.save
